@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { InteractionComponent, InteractionParentComponent } from './component-interaction.ts/interaction.component';
 import { InteractionService } from './component-interaction.ts/interaction.service';
 import { StyleComponent, StyleParentComponent } from './component-styles/style.component';
+import { ContentProjectionComponent, ContentProjectionParentComponent } from './content-projection/content-projection.component';
 import { HomeComponent } from './home/home.component';
 import { LifecycleComponent, LifecycleParentComponent } from './lifecycle/lifecycle.component';
 
@@ -19,8 +20,9 @@ import { LifecycleComponent, LifecycleParentComponent } from './lifecycle/lifecy
     InteractionParentComponent,
     InteractionComponent,
     StyleComponent,
-    StyleParentComponent
-
+    StyleParentComponent,
+    ContentProjectionComponent,
+    ContentProjectionParentComponent
   ],
   imports: [
     BrowserModule,
