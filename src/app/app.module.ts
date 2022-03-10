@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { InteractionComponent, InteractionParentComponent } from './component-interaction.ts/interaction.component';
+import { InteractionService } from './component-interaction.ts/interaction.service';
 import { HomeComponent } from './home/home.component';
 import { LifecycleComponent, LifecycleParentComponent } from './lifecycle/lifecycle.component';
 
@@ -11,13 +13,15 @@ import { LifecycleComponent, LifecycleParentComponent } from './lifecycle/lifecy
     AppComponent,
     HomeComponent,
     LifecycleComponent,
-    LifecycleParentComponent
+    LifecycleParentComponent,
+    InteractionParentComponent,
+    InteractionComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [InteractionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
