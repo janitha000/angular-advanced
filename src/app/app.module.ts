@@ -8,6 +8,8 @@ import { InteractionComponent, InteractionParentComponent } from './component-in
 import { InteractionService } from './component-interaction.ts/interaction.service';
 import { StyleComponent, StyleParentComponent } from './component-styles/style.component';
 import { ContentProjectionComponent, ContentProjectionParentComponent } from './content-projection/content-projection.component';
+import { DynamicComponent, DynamicOneComponent, DynamicTwoComponent } from './dynamic-loading/dynamic-loading.component';
+import { DynamicDirective } from './dynamic-loading/dynamic.directive';
 import { HomeComponent } from './home/home.component';
 import { LifecycleComponent, LifecycleParentComponent } from './lifecycle/lifecycle.component';
 
@@ -22,14 +24,18 @@ import { LifecycleComponent, LifecycleParentComponent } from './lifecycle/lifecy
     StyleComponent,
     StyleParentComponent,
     ContentProjectionComponent,
-    ContentProjectionParentComponent
+    ContentProjectionParentComponent,
+    DynamicComponent,
+    DynamicOneComponent,
+    DynamicTwoComponent,
+    DynamicDirective
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     CommonModule
   ],
-  providers: [InteractionService],
+  providers: [InteractionService,],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
