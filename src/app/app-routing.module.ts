@@ -7,6 +7,8 @@ import { CustomPipeComponent } from './custom-pipe/custom-pipe.component';
 import { DynamicComponent } from './dynamic-loading/dynamic-loading.component';
 import { HomeComponent } from './home/home.component';
 import { LifecycleParentComponent } from './lifecycle/lifecycle.component';
+import { TemplateVariableComponent } from './template-variable/template-variable.component';
+import { TwoWayParentComponent } from './tow-way-binding/two-way-binding.component';
 
 const routes: Routes = [
   { path: 'component-interaction', component: InteractionParentComponent },
@@ -15,6 +17,8 @@ const routes: Routes = [
   { path: 'content', component: ContentProjectionParentComponent },
   { path: 'dynamic-loading', component: DynamicComponent },
   { path: 'custom-pipe', component: CustomPipeComponent },
+  { path: 'two-way', component: TwoWayParentComponent },
+  { path: 'template', component: TemplateVariableComponent },
   { path: '', component: HomeComponent },
 ];
 

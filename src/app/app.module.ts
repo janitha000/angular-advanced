@@ -16,6 +16,8 @@ import { DynamicDirective } from './dynamic-loading/dynamic.directive';
 import { HomeComponent } from './home/home.component';
 import { LifecycleComponent, LifecycleParentComponent } from './lifecycle/lifecycle.component';
 import { ImpureFilterPipe } from './custom-pipe/impure-filter.pipe';
+import { TwoWayComponent, TwoWayParentComponent } from './tow-way-binding/two-way-binding.component';
+import { TemplateVariableComponent } from './template-variable/template-variable.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,10 @@ import { ImpureFilterPipe } from './custom-pipe/impure-filter.pipe';
     DynamicDirective,
     ExponentialPipe,
     ImpureFilterPipe,
-    CustomPipeComponent
+    CustomPipeComponent,
+    TwoWayComponent,
+    TwoWayParentComponent,
+    TemplateVariableComponent
   ],
   imports: [
     BrowserModule,
