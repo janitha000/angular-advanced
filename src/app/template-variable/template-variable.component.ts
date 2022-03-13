@@ -22,3 +22,8 @@ export class TemplateVariableComponent implements OnInit {
 
 //Can use with ngForm <form #itemForm="ngForm" (ngSubmit)="onSubmit(itemForm)">
 //disable button if itemForm.form.valid
+
+//Template input varibale
+// <ng-template #hero let-hero let-i="index" let-odd="isOdd">
+//   <div [class]="{'odd-row': odd}">{{i}}:{{hero.name}}</div>
+// </ng-template>
