@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 
-@Injectable({ providedIn: 'root' })
+@Injectable(
+    { providedIn: 'root' } //if we want this to lazy load, remove this and add only in @ngModule providers array
+)
 export class InteractionService {
     private messageSource = new Subject<string>();
 

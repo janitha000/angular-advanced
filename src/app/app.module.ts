@@ -21,6 +21,7 @@ import { TwoWayComponent, TwoWayParentComponent } from './tow-way-binding/two-wa
 import { TemplateVariableComponent } from './template-variable/template-variable.component';
 import { CanActivateChild1Component, CanActivateChild2Component, CanActivateComponent } from './can-activate/can-activate.component';
 import { CanDeactivateComponent } from './can-deactivate/can-deactivate.component';
+import { DependencyComponent } from './dependency-injection/dependency.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { CanDeactivateComponent } from './can-deactivate/can-deactivate.componen
     CanActivateChild1Component,
     CanActivateChild2Component,
     CanActivateComponent,
-    CanDeactivateComponent
+    CanDeactivateComponent,
+    DependencyComponent
   ],
   imports: [
     BrowserModule,
