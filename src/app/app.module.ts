@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,6 +19,8 @@ import { LifecycleComponent, LifecycleParentComponent } from './lifecycle/lifecy
 import { ImpureFilterPipe } from './custom-pipe/impure-filter.pipe';
 import { TwoWayComponent, TwoWayParentComponent } from './tow-way-binding/two-way-binding.component';
 import { TemplateVariableComponent } from './template-variable/template-variable.component';
+import { CanActivateChild1Component, CanActivateChild2Component, CanActivateComponent } from './can-activate/can-activate.component';
+import { CanDeactivateComponent } from './can-deactivate/can-deactivate.component';
 
 @NgModule({
   declarations: [
@@ -40,13 +43,18 @@ import { TemplateVariableComponent } from './template-variable/template-variable
     CustomPipeComponent,
     TwoWayComponent,
     TwoWayParentComponent,
-    TemplateVariableComponent
+    TemplateVariableComponent,
+    CanActivateChild1Component,
+    CanActivateChild2Component,
+    CanActivateComponent,
+    CanDeactivateComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     CommonModule,
-    FormsModule
+    FormsModule,
+    RouterModule
   ],
   providers: [InteractionService,],
   bootstrap: [AppComponent]
