@@ -1,15 +1,3 @@
-//use alternative class
-// providers : [{ provide: Logger, useClass: EventLogger }]
-
-// @Injectable()
-// export class EvenBetterLogger extends Logger {
-//   constructor(private userService: UserService) { super(); }
-
-//   override log(message: string) {
-//     const name = this.userService.user.name;
-//     super.log(`Message to ${name}: ${message}`);
-//   }
-// }
 
 //How DI Resolved
 //Element tree -> module tree -> null injector
@@ -35,6 +23,8 @@ import { LoggerService } from './logger.service';
     }]
     //provide class on runtime based on a dependency value
     //inject deps using inject tokens which will be available in factory
+
+    //use multi : true when you want multiple services with the same injection token
 })
 
 export class DependencyComponent implements OnInit {
