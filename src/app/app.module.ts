@@ -22,6 +22,7 @@ import { TemplateVariableComponent } from './template-variable/template-variable
 import { CanActivateChild1Component, CanActivateChild2Component, CanActivateComponent } from './can-activate/can-activate.component';
 import { CanDeactivateComponent } from './can-deactivate/can-deactivate.component';
 import { DependencyComponent } from './dependency-injection/dependency.component';
+import { TrackByComponent } from './ngfor-trackby/ngfor-trackby.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { DependencyComponent } from './dependency-injection/dependency.component
     CanActivateChild2Component,
     CanActivateComponent,
     CanDeactivateComponent,
-    DependencyComponent
+    DependencyComponent,
+    TrackByComponent
   ],
   imports: [
     BrowserModule,

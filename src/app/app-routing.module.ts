@@ -16,6 +16,7 @@ import { DependencyComponent } from './dependency-injection/dependency.component
 import { DynamicComponent } from './dynamic-loading/dynamic-loading.component';
 import { HomeComponent } from './home/home.component';
 import { LifecycleParentComponent } from './lifecycle/lifecycle.component';
+import { TrackByComponent } from './ngfor-trackby/ngfor-trackby.component';
 import { TemplateVariableComponent } from './template-variable/template-variable.component';
 import { TwoWayParentComponent } from './tow-way-binding/two-way-binding.component';
 
@@ -29,6 +30,7 @@ const routes: Routes = [
   { path: 'two-way', component: TwoWayParentComponent },
   { path: 'template', component: TemplateVariableComponent },
   { path: 'dependency', component: DependencyComponent },
+  { path: 'track-by', component: TrackByComponent },
   //Can Activate
   {
     path: 'can-activate',

@@ -26,7 +26,8 @@ export class TwoWayComponent implements OnInit {
     selector: 'app-two-way-parent',
     template: `<p>Value from parent {{inputVar}}</p>
     <p>------------------</p>
-    <app-two-way [inputSize]=inputVar (inputSizeChange)="inputVar=$event"></app-two-way>`
+    <app-two-way [inputSize]=inputVar (inputSizeChange)="inputVar=$event"></app-two-way>
+    <app-two-way [(inputSize)]=inputVar></app-two-way>`
 })
 
 export class TwoWayParentComponent implements OnInit {
