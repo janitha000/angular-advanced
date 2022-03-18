@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AsyncPipeComponent } from './async-pipe/async-pipe.component';
 import { AuthGuard } from './can-activate/auth.guard';
 import { CanActivateChild1Component, CanActivateChild2Component, CanActivateComponent } from './can-activate/can-activate.component';
 import { PermissionGuard } from './can-activate/permission.guard';
@@ -33,6 +34,7 @@ const routes: Routes = [
   { path: 'dependency', component: DependencyComponent },
   { path: 'track-by', component: TrackByComponent },
   { path: 'custom-directive', component: CustomDirectivesComponent },
+  { path: 'async-pipe', component: AsyncPipeComponent },
   //Can Activate
   {
     path: 'can-activate',

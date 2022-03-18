@@ -24,6 +24,7 @@ import { CanDeactivateComponent } from './can-deactivate/can-deactivate.componen
 import { DependencyComponent } from './dependency-injection/dependency.component';
 import { TrackByComponent } from './ngfor-trackby/ngfor-trackby.component';
 import { CustomDirectivesComponent, TTClassDirective, UnlessDirective } from './custom-directives/custom.directive';
+import { AsyncPipeComponent } from './async-pipe/async-pipe.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { CustomDirectivesComponent, TTClassDirective, UnlessDirective } from './
     TrackByComponent,
     CustomDirectivesComponent,
     TTClassDirective,
-    UnlessDirective
+    UnlessDirective,
+    AsyncPipeComponent
   ],
   imports: [
     BrowserModule,
