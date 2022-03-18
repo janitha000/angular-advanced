@@ -11,6 +11,7 @@ import { PreLoadingStrategy } from './can-load/pre-loading-stratergy';
 import { InteractionParentComponent } from './component-interaction.ts/interaction.component';
 import { StyleParentComponent } from './component-styles/style.component';
 import { ContentProjectionParentComponent } from './content-projection/content-projection.component';
+import { CustomDirectivesComponent } from './custom-directives/custom.directive';
 import { CustomPipeComponent } from './custom-pipe/custom-pipe.component';
 import { DependencyComponent } from './dependency-injection/dependency.component';
 import { DynamicComponent } from './dynamic-loading/dynamic-loading.component';
@@ -31,6 +32,7 @@ const routes: Routes = [
   { path: 'template', component: TemplateVariableComponent },
   { path: 'dependency', component: DependencyComponent },
   { path: 'track-by', component: TrackByComponent },
+  { path: 'custom-directive', component: CustomDirectivesComponent },
   //Can Activate
   {
     path: 'can-activate',

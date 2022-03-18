@@ -23,6 +23,7 @@ import { CanActivateChild1Component, CanActivateChild2Component, CanActivateComp
 import { CanDeactivateComponent } from './can-deactivate/can-deactivate.component';
 import { DependencyComponent } from './dependency-injection/dependency.component';
 import { TrackByComponent } from './ngfor-trackby/ngfor-trackby.component';
+import { CustomDirectivesComponent, TTClassDirective, UnlessDirective } from './custom-directives/custom.directive';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,10 @@ import { TrackByComponent } from './ngfor-trackby/ngfor-trackby.component';
     CanActivateComponent,
     CanDeactivateComponent,
     DependencyComponent,
-    TrackByComponent
+    TrackByComponent,
+    CustomDirectivesComponent,
+    TTClassDirective,
+    UnlessDirective
   ],
   imports: [
     BrowserModule,
