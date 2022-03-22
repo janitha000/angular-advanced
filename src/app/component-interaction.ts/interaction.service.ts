@@ -6,6 +6,7 @@ import { Subject } from 'rxjs';
 )
 export class InteractionService {
     private messageSource = new Subject<string>();
+    testVar: boolean = false;
 
     messageObs$ = this.messageSource.asObservable();
 

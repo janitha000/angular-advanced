@@ -13,7 +13,7 @@ import { InteractionService } from './interaction.service';
     selector: 'app-interaction',
     template: `<p>{{userName}}</p>
         <p>{{age}}</p>
-        <button (click)=sendMessage()>Send Message Child</button>
+        <button class="button" (click)=sendMessage()>Send Message Child</button>
     `
 })
 
