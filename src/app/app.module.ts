@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -28,6 +28,7 @@ import { AsyncPipeComponent } from './async-pipe/async-pipe.component';
 import { ResolveGuardComponent, ResolveGuardParentComponent } from './resolve-guard/resolve-guard.component';
 import { UserResolver } from './resolve-guard/user.resolver';
 import { NamedOutletComponent } from './named-outlets/named-outlet.component';
+import { ReactiveFormComponent, ReactiveWithFormBuilderComponent } from './reactive-forms/reactive-forms.component';
 
 @NgModule({
   declarations: [
@@ -63,14 +64,17 @@ import { NamedOutletComponent } from './named-outlets/named-outlet.component';
     AsyncPipeComponent,
     ResolveGuardComponent,
     ResolveGuardParentComponent,
-    NamedOutletComponent
+    NamedOutletComponent,
+    ReactiveFormComponent,
+    ReactiveWithFormBuilderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     CommonModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    ReactiveFormsModule
   ],
   providers: [InteractionService,],
   bootstrap: [AppComponent]
