@@ -25,6 +25,8 @@ import { DependencyComponent } from './dependency-injection/dependency.component
 import { TrackByComponent } from './ngfor-trackby/ngfor-trackby.component';
 import { CustomDirectivesComponent, TTClassDirective, UnlessDirective } from './custom-directives/custom.directive';
 import { AsyncPipeComponent } from './async-pipe/async-pipe.component';
+import { ResolveGuardComponent, ResolveGuardParentComponent } from './resolve-guard/resolve-guard.component';
+import { UserResolver } from './resolve-guard/user.resolver';
 
 @NgModule({
   declarations: [
@@ -57,7 +59,9 @@ import { AsyncPipeComponent } from './async-pipe/async-pipe.component';
     CustomDirectivesComponent,
     TTClassDirective,
     UnlessDirective,
-    AsyncPipeComponent
+    AsyncPipeComponent,
+    ResolveGuardComponent,
+    ResolveGuardParentComponent,
   ],
   imports: [
     BrowserModule,

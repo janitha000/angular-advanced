@@ -19,6 +19,8 @@ import { DynamicComponent } from './dynamic-loading/dynamic-loading.component';
 import { HomeComponent } from './home/home.component';
 import { LifecycleParentComponent } from './lifecycle/lifecycle.component';
 import { TrackByComponent } from './ngfor-trackby/ngfor-trackby.component';
+import { ResolveGuardComponent, ResolveGuardParentComponent } from './resolve-guard/resolve-guard.component';
+import { UserResolver } from './resolve-guard/user.resolver';
 import { TemplateVariableComponent } from './template-variable/template-variable.component';
 import { TwoWayParentComponent } from './tow-way-binding/two-way-binding.component';
 
@@ -65,6 +67,15 @@ const routes: Routes = [
     loadChildren: () => import('./can-load/can-load.module').then(m => m.CanLoadModule),
     // canLoad: [LoadGuard] will not work with preLoadingStrategy
     data: { preload: true, delay: 5000 } //optional, only need to delay-pre-load strategy
+  },
+  //Resolver guard - to prefetch data before moving to route
+  {
+    path: 'resolve-guard',
+    component: ResolveGuardParentComponent,
+    children: [{
+      path: ':id', component: ResolveGuardComponent,
+      resolve: { user: UserResolver }
+    }]
   },
   { path: '', component: HomeComponent },
 ];
