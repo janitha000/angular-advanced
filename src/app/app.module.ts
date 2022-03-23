@@ -27,6 +27,7 @@ import { CustomDirectivesComponent, TTClassDirective, UnlessDirective } from './
 import { AsyncPipeComponent } from './async-pipe/async-pipe.component';
 import { ResolveGuardComponent, ResolveGuardParentComponent } from './resolve-guard/resolve-guard.component';
 import { UserResolver } from './resolve-guard/user.resolver';
+import { NamedOutletComponent } from './named-outlets/named-outlet.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { UserResolver } from './resolve-guard/user.resolver';
     AsyncPipeComponent,
     ResolveGuardComponent,
     ResolveGuardParentComponent,
+    NamedOutletComponent
   ],
   imports: [
     BrowserModule,

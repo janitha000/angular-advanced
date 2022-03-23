@@ -18,6 +18,7 @@ import { DependencyComponent } from './dependency-injection/dependency.component
 import { DynamicComponent } from './dynamic-loading/dynamic-loading.component';
 import { HomeComponent } from './home/home.component';
 import { LifecycleParentComponent } from './lifecycle/lifecycle.component';
+import { NamedOutletComponent } from './named-outlets/named-outlet.component';
 import { TrackByComponent } from './ngfor-trackby/ngfor-trackby.component';
 import { ResolveGuardComponent, ResolveGuardParentComponent } from './resolve-guard/resolve-guard.component';
 import { UserResolver } from './resolve-guard/user.resolver';
@@ -77,6 +78,8 @@ const routes: Routes = [
       resolve: { user: UserResolver }
     }]
   },
+  //named outlets
+  { path: 'named-outlet', component: NamedOutletComponent, outlet: "details" },
   { path: '', component: HomeComponent },
 ];
 
