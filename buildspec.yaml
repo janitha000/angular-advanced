@@ -4,13 +4,17 @@ phases:
   install:
     commands:
       - echo installing nodejs...
+      - nvm install 14
+      - nvm use 14
+  pre-build:
+    commands:
+      - echo installing npm packages ....
       - npm install
-      - npm install -g @angular/cli
   build:
     commands:
       # - echo testing...
       - echo building...
-      - ng build --prod
+      - ng build
 artifacts:
   files:
     - "**/*"
