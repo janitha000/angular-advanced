@@ -2,10 +2,11 @@ version: 0.2
 
 phases:
   install:
+    runtime-versions:
+      nodejs: 14
     commands:
-      - echo installing nodejs...
-      - nvm install 14
-      - nvm use 14
+      - echo installing angualr...
+      - npm install -g @angular/cli
   pre_build:
     commands:
       - echo installing npm packages ....
