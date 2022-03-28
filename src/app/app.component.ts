@@ -12,7 +12,7 @@ export class AppComponent implements OnInit {
   private _showLoaderEvents$!: Observable<boolean>;
   private _hideLoaderEvents$!: Observable<boolean>;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
     //user resolver loader
@@ -29,3 +29,4 @@ export class AppComponent implements OnInit {
   }
   title = 'angular-advanced';
 }
+
