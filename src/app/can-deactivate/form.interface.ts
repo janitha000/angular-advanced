@@ -1,3 +1,3 @@
 export interface CanForm {
-    canGoHome: boolean;
+  canGoHome: boolean;
 }

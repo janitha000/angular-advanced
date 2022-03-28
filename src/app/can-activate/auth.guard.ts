@@ -3,10 +3,10 @@ import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from
 
 @Injectable({ providedIn: 'root' })
 export class AuthGuard implements CanActivate {
-    isAuthenticated: boolean = true;
-    constructor(private router: Router) { }
+  isAuthenticated: boolean = true;
+  constructor(private router: Router) {}
 
-    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-        return (this.isAuthenticated) ? true : this.router.createUrlTree(['life-cycle'])
-    }
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+    return this.isAuthenticated ? true : this.router.createUrlTree(['life-cycle']);
+  }
 }

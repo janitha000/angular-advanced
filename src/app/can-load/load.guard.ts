@@ -3,11 +3,11 @@ import { CanLoad, Route } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
 export class LoadGuard implements CanLoad {
-    constructor() { }
+  constructor() {}
 
-    canLoad(route: Route) {
-        return true;
-    }
+  canLoad(route: Route) {
+    return true;
+  }
 }
 
 //Used in app-routing.module.ts

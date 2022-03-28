@@ -4,11 +4,10 @@ import { User } from './resolve-guard.component';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
-    constructor() { }
+  constructor() {}
 
-    getUserById(id: string): Observable<User> {
-        let user: User = { name: "Janitha", age: 32 }
-        return of(user);
-    }
-
+  getUserById(id: string): Observable<User> {
+    let user: User = { name: 'Janitha', age: 32 };
+    return of(user);
+  }
 }

@@ -5,21 +5,27 @@ import { filter, mapTo, merge, Observable } from 'rxjs';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
   isLoading$!: Observable<boolean>;
   private _showLoaderEvents$!: Observable<boolean>;
   private _hideLoaderEvents$!: Observable<boolean>;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
-    //user resolver loader 
-    this._showLoaderEvents$ = this.router.events.pipe(filter(e => e instanceof ResolveStart), mapTo(true))
-    this._hideLoaderEvents$ = this.router.events.pipe(filter(e => e instanceof ResolveEnd), mapTo(false))
+    //user resolver loader
+    this._showLoaderEvents$ = this.router.events.pipe(
+      filter((e) => e instanceof ResolveStart),
+      mapTo(true),
+    );
+    this._hideLoaderEvents$ = this.router.events.pipe(
+      filter((e) => e instanceof ResolveEnd),
+      mapTo(false),
+    );
 
-    this.isLoading$ = merge(this._hideLoaderEvents$, this._showLoaderEvents$)
+    this.isLoading$ = merge(this._hideLoaderEvents$, this._showLoaderEvents$);
   }
   title = 'angular-advanced';
 }

@@ -1,12 +1,12 @@
-import { InjectionToken } from "@angular/core"
+import { InjectionToken } from '@angular/core';
 
 export interface AppConfig {
-    enabled: boolean
+  enabled: boolean;
 }
 
 export const APP_CONFIG = new InjectionToken<AppConfig>('app.config', {
-    providedIn: "root",
-    factory: () => ({
-        enabled: true
-    })
-})
+  providedIn: 'root',
+  factory: () => ({
+    enabled: true,
+  }),
+});

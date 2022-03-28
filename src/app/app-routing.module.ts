@@ -53,43 +53,48 @@ const routes: Routes = [
         children: [
           { path: 'child-1', component: CanActivateChild1Component },
           { path: 'child-2', component: CanActivateChild2Component },
-        ]
+        ],
       },
       // { path: 'child-1', component: ListComponent }  A path which does not need permission gurad with canActivateChild
-    ]
+    ],
   },
   //Can Deactivate
   {
     path: 'can-deactivate',
     component: CanDeactivateComponent,
-    canDeactivate: [FormGuard]
+    canDeactivate: [FormGuard],
   },
   //Can Load
   {
     path: 'can-load',
-    loadChildren: () => import('./can-load/can-load.module').then(m => m.CanLoadModule),
+    loadChildren: () => import('./can-load/can-load.module').then((m) => m.CanLoadModule),
     // canLoad: [LoadGuard] will not work with preLoadingStrategy
-    data: { preload: true, delay: 5000 } //optional, only need to delay-pre-load strategy
+    data: { preload: true, delay: 5000 }, //optional, only need to delay-pre-load strategy
   },
   //Resolver guard - to prefetch data before moving to route
   {
     path: 'resolve-guard',
     component: ResolveGuardParentComponent,
-    children: [{
-      path: ':id', component: ResolveGuardComponent,
-      resolve: { user: UserResolver }
-    }]
+    children: [
+      {
+        path: ':id',
+        component: ResolveGuardComponent,
+        resolve: { user: UserResolver },
+      },
+    ],
   },
   //named outlets
-  { path: 'named-outlet', component: NamedOutletComponent, outlet: "details" },
+  { path: 'named-outlet', component: NamedOutletComponent, outlet: 'details' },
   { path: '', component: HomeComponent },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {
-    // preloadingStrategy: PreLoadingStrategy //custom loading strategy, only load lazy loaded modules if the user is logged in
-    preloadingStrategy: DelayPreLoadStratergy //custom loading strategy, load with a delay mentioned in routes data
-  })],
-  exports: [RouterModule]
+  imports: [
+    RouterModule.forRoot(routes, {
+      // preloadingStrategy: PreLoadingStrategy //custom loading strategy, only load lazy loaded modules if the user is logged in
+      preloadingStrategy: DelayPreLoadStratergy, //custom loading strategy, load with a delay mentioned in routes data
+    }),
+  ],
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

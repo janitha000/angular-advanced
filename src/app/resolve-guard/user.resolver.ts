@@ -6,15 +6,15 @@ import { UserService } from './user.service';
 
 @Injectable({ providedIn: 'root' })
 export class UserResolver implements Resolve<User> {
-    constructor(private userService: UserService, private router: Router) { }
+  constructor(private userService: UserService, private router: Router) {}
 
-    resolve(route: ActivatedRouteSnapshot): Observable<User> | Promise<User> | User {
-        return this.userService.getUserById(route.params?.['id']).pipe(
-            delay(4000),
-            catchError(() => {
-                this.router.navigate([''])
-                return EMPTY
-            })
-        );
-    }
+  resolve(route: ActivatedRouteSnapshot): Observable<User> | Promise<User> | User {
+    return this.userService.getUserById(route.params?.['id']).pipe(
+      delay(4000),
+      catchError(() => {
+        this.router.navigate(['']);
+        return EMPTY;
+      }),
+    );
+  }
 }

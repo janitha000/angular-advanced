@@ -3,12 +3,11 @@ import { Logger } from './logger.interface';
 
 @Injectable()
 export class LoggerService implements Logger {
-    constructor() { }
+  constructor() {}
 
-    log(message: string): void {
-        console.log('logger: ' + message)
-    };
-
+  log(message: string): void {
+    console.log('logger: ' + message);
+  }
 }
 
 //useClass example

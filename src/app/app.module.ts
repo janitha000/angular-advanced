@@ -66,17 +66,10 @@ import { ReactiveFormComponent, ReactiveWithFormBuilderComponent } from './react
     ResolveGuardParentComponent,
     NamedOutletComponent,
     ReactiveFormComponent,
-    ReactiveWithFormBuilderComponent
+    ReactiveWithFormBuilderComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    CommonModule,
-    FormsModule,
-    RouterModule,
-    ReactiveFormsModule
-  ],
-  providers: [InteractionService,],
-  bootstrap: [AppComponent]
+  imports: [BrowserModule, AppRoutingModule, CommonModule, FormsModule, RouterModule, ReactiveFormsModule],
+  providers: [InteractionService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
