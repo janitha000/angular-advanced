@@ -10,10 +10,10 @@
     "e2e": "ng e2e",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
-    "lint": "eslint --fix .",
-    "prepare": "husky install",
+    "lint": " eslint --fix .",
     "prettier": "prettier --check .",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "prepare": "husky install"
   },
   "private": true,
   "dependencies": {
@@ -38,6 +38,7 @@
     "@types/jasmine": "~3.10.0",
     "@types/node": "^12.11.1",
     "cypress": "latest",
+    "husky": "^7.0.0",
     "jasmine-core": "~3.10.0",
     "karma": "~6.3.0",
     "karma-chrome-launcher": "~3.1.0",
@@ -45,7 +46,6 @@
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
     "prettier": "^2.6.1",
-    "typescript": "~4.4.3",
-    "husky": "^7.0.0"
+    "typescript": "~4.4.3"
   }
 }
