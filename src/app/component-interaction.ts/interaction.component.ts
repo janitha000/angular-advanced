@@ -1,5 +1,5 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { ChangeDetectionStrategy, Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Subject, Subscription, take, takeUntil } from 'rxjs';
 import { InteractionService } from './interaction.service';
 
 //@Input()
@@ -13,6 +13,7 @@ import { InteractionService } from './interaction.service';
   template: `<p>{{ userName }}</p>
     <p>{{ age }}</p>
     <button class="button" (click)="sendMessage()">Send Message Child</button> `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InteractionComponent implements OnInit {
   @Input('name') userName: string = '';
@@ -59,6 +60,7 @@ export class InteractionParentComponent implements OnInit {
   childMsg: string = '';
 
   messageObs$!: Subscription;
+  onDestroy$: Subject<boolean> = new Subject();
 
   @ViewChild(InteractionComponent)
   private childComponent!: InteractionComponent;
@@ -66,6 +68,14 @@ export class InteractionParentComponent implements OnInit {
     this.messageObs$ = this.interactionService.messageObs$.subscribe((message) => {
       this.childMsg = message;
     });
+
+    //after taking one value, automatically unsubscribe
+    //good when we are expecting only one value (like http results)
+    //but needs to make sure the source emit the value at least once, else there will be a leak
+    this.interactionService.messageObs$.pipe(take(1)).subscribe((message) => (this.childMsg = message));
+
+    //will be unsubscribed when onDestroy$.next()
+    this.interactionService.messageObs$.pipe(takeUntil(this.onDestroy$)).subscribe((message) => (this.childMsg = message));
   }
 
   ngOnInit() {}
@@ -76,5 +86,8 @@ export class InteractionParentComponent implements OnInit {
 
   ngOnDestry() {
     this.messageObs$.unsubscribe();
+
+    this.onDestroy$.next(true);
+    this.onDestroy$.complete();
   }
 }

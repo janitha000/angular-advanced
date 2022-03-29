@@ -21,6 +21,7 @@ import { LifecycleParentComponent } from './lifecycle/lifecycle.component';
 import { NamedOutletComponent } from './named-outlets/named-outlet.component';
 import { TrackByComponent } from './ngfor-trackby/ngfor-trackby.component';
 import { ReactiveFormComponent } from './reactive-forms/reactive-forms.component';
+import { ValueAccessorComponent } from './reactive-forms/value-accessor/value-accessor.component';
 import { ResolveGuardComponent, ResolveGuardParentComponent } from './resolve-guard/resolve-guard.component';
 import { UserResolver } from './resolve-guard/user.resolver';
 import { TemplateVariableComponent } from './template-variable/template-variable.component';
@@ -40,8 +41,9 @@ const routes: Routes = [
   { path: 'track-by', component: TrackByComponent },
   { path: 'custom-directive', component: CustomDirectivesComponent },
   { path: 'async-pipe', component: AsyncPipeComponent },
-  { path: 'reactive-form', component: ReactiveFormComponent },
   { path: 'view-child', component: ViewParentComponent },
+  { path: 'reactive-form', component: ReactiveFormComponent },
+  { path: 'value-control', component: ValueAccessorComponent },
   //Can Activate
   {
     path: 'can-activate',

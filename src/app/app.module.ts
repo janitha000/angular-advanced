@@ -31,6 +31,7 @@ import { NamedOutletComponent } from './named-outlets/named-outlet.component';
 import { ReactiveFormComponent, ReactiveWithFormBuilderComponent } from './reactive-forms/reactive-forms.component';
 import { TestComponent } from './testing/test/test.component';
 import { ViewChidComponent, ViewParentComponent } from './view-child/view-child.component';
+import { DisableComponent, ValueAccessorComponent } from './reactive-forms/value-accessor/value-accessor.component';
 
 @NgModule({
   declarations: [
@@ -74,6 +75,8 @@ import { ViewChidComponent, ViewParentComponent } from './view-child/view-child.
     ViewParentComponent,
     CardComponent,
     DynamicFactoryComponent,
+    ValueAccessorComponent,
+    DisableComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, CommonModule, FormsModule, RouterModule, ReactiveFormsModule],
   providers: [InteractionService],
