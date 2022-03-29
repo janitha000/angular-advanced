@@ -30,6 +30,7 @@ import { UserResolver } from './resolve-guard/user.resolver';
 import { NamedOutletComponent } from './named-outlets/named-outlet.component';
 import { ReactiveFormComponent, ReactiveWithFormBuilderComponent } from './reactive-forms/reactive-forms.component';
 import { TestComponent } from './testing/test/test.component';
+import { ViewChidComponent, ViewParentComponent } from './view-child/view-child.component';
 
 @NgModule({
   declarations: [
@@ -69,6 +70,8 @@ import { TestComponent } from './testing/test/test.component';
     ReactiveFormComponent,
     ReactiveWithFormBuilderComponent,
     TestComponent,
+    ViewChidComponent,
+    ViewParentComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, CommonModule, FormsModule, RouterModule, ReactiveFormsModule],
   providers: [InteractionService],

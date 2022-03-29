@@ -25,6 +25,7 @@ import { ResolveGuardComponent, ResolveGuardParentComponent } from './resolve-gu
 import { UserResolver } from './resolve-guard/user.resolver';
 import { TemplateVariableComponent } from './template-variable/template-variable.component';
 import { TwoWayParentComponent } from './tow-way-binding/two-way-binding.component';
+import { ViewParentComponent } from './view-child/view-child.component';
 
 const routes: Routes = [
   { path: 'component-interaction', component: InteractionParentComponent },
@@ -40,6 +41,7 @@ const routes: Routes = [
   { path: 'custom-directive', component: CustomDirectivesComponent },
   { path: 'async-pipe', component: AsyncPipeComponent },
   { path: 'reactive-form', component: ReactiveFormComponent },
+  { path: 'view-child', component: ViewParentComponent },
   //Can Activate
   {
     path: 'can-activate',

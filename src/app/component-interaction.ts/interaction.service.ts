@@ -6,6 +6,7 @@ import { Subject } from 'rxjs';
 )
 export class InteractionService {
   private messageSource = new Subject<string>();
+  //if need the latest when subscribing use BehaviorSubject instead
   testVar: boolean = false;
 
   messageObs$ = this.messageSource.asObservable();
