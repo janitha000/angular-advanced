@@ -16,6 +16,7 @@ import { CustomDirectivesComponent } from './custom-directives/custom.directive'
 import { CustomPipeComponent } from './custom-pipe/custom-pipe.component';
 import { DependencyComponent } from './dependency-injection/dependency.component';
 import { DynamicComponent } from './dynamic-loading/dynamic-loading.component';
+import { ForChildComponent } from './for-child/for-child.component';
 import { HomeComponent } from './home/home.component';
 import { LifecycleParentComponent } from './lifecycle/lifecycle.component';
 import { NamedOutletComponent } from './named-outlets/named-outlet.component';
@@ -44,6 +45,7 @@ const routes: Routes = [
   { path: 'view-child', component: ViewParentComponent },
   { path: 'reactive-form', component: ReactiveFormComponent },
   { path: 'value-control', component: ValueAccessorComponent },
+  { path: 'for-child', component: ForChildComponent },
   //Can Activate
   {
     path: 'can-activate',

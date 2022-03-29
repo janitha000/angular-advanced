@@ -32,6 +32,8 @@ import { ReactiveFormComponent, ReactiveWithFormBuilderComponent } from './react
 import { TestComponent } from './testing/test/test.component';
 import { ViewChidComponent, ViewParentComponent } from './view-child/view-child.component';
 import { DisableComponent, ValueAccessorComponent } from './reactive-forms/value-accessor/value-accessor.component';
+import { ForChildComponent } from './for-child/for-child.component';
+import { ForChildModule } from './for-child/for-child.module';
 
 @NgModule({
   declarations: [
@@ -79,7 +81,7 @@ import { DisableComponent, ValueAccessorComponent } from './reactive-forms/value
     DisableComponent,
     CardChildComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, CommonModule, FormsModule, RouterModule, ReactiveFormsModule],
+  imports: [BrowserModule, AppRoutingModule, CommonModule, FormsModule, RouterModule, ReactiveFormsModule, ForChildModule],
   providers: [InteractionService],
   bootstrap: [AppComponent],
 })
