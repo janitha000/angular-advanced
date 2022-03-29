@@ -9,7 +9,7 @@ import { AppComponent } from './app.component';
 import { InteractionComponent, InteractionParentComponent } from './component-interaction.ts/interaction.component';
 import { InteractionService } from './component-interaction.ts/interaction.service';
 import { StyleComponent, StyleParentComponent } from './component-styles/style.component';
-import { ContentProjectionComponent, ContentProjectionParentComponent } from './content-projection/content-projection.component';
+import { CardComponent, ContentProjectionComponent, ContentProjectionParentComponent } from './content-projection/content-projection.component';
 import { CustomPipeComponent } from './custom-pipe/custom-pipe.component';
 import { ExponentialPipe } from './custom-pipe/exponential.pipe';
 import { DynamicComponent, DynamicOneComponent, DynamicTwoComponent } from './dynamic-loading/dynamic-loading.component';
@@ -72,6 +72,7 @@ import { ViewChidComponent, ViewParentComponent } from './view-child/view-child.
     TestComponent,
     ViewChidComponent,
     ViewParentComponent,
+    CardComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, CommonModule, FormsModule, RouterModule, ReactiveFormsModule],
   providers: [InteractionService],
