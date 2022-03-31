@@ -1,6 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Observable, of, Subject, zip, combineLatest } from 'rxjs';
-import { combineLatestWith, debounceTime, distinctUntilChanged, map, mergeMap, switchMap, take, takeLast, takeUntil, takeWhile, tap } from 'rxjs/operators';
+import { Observable, of, Subject, zip, combineLatest, from, fromEvent } from 'rxjs';
+import { combineLatestWith, concatMap, debounceTime, distinctUntilChanged, exhaustMap, map, mergeMap, switchMap, take, takeLast, takeUntil, takeWhile, tap } from 'rxjs/operators';
 import { RxjsService } from './rxjs.service';
 
 @Component({
@@ -21,7 +22,7 @@ export class RxjsComponent implements OnInit {
   debounceObs$!: Observable<number>;
   distinctObs$!: Observable<number>;
 
-  constructor(private obsService: RxjsService) {}
+  constructor(private obsService: RxjsService, private http: HttpClient) {}
 
   ngOnInit() {
     this.map();
@@ -63,7 +64,8 @@ export class RxjsComponent implements OnInit {
   }
 
   switchMap() {
-    //cancel first obs and move in to the second obs with the data from first obs
+    //cancel first obs previose subs and move in to the second obs with the data from first obs
+    //good when searching using http calls, if the search term becomes different the first obs will be cancelled(http call)
     let firstObs$: Observable<number> = this.obsService.getCommonObs();
     let secondObs$: Observable<string> = this.obsService.getStringObs();
 
@@ -79,6 +81,39 @@ export class RxjsComponent implements OnInit {
     );
 
     this.switchMapObs$.pipe(takeUntil(this.onDestroy$)).subscribe();
+  }
+
+  //works same as switchMap, but it will not cancel the first call
+  //will not wait until first obs is completed(like concatMap)
+  //good when we need to send multiple different http calls based on a parameter or send requests parellel
+  mergeMap() {
+    let obs1$ = from([1, 2, 3, 4]);
+    const getObs2 = (param: number) => of(`calling http using ${param}`);
+
+    obs1$.pipe(
+      mergeMap((val) => this.http.post(`http://${val}`, val)), //this will not wait until obs1$ is completed. So multiple subs can be there in a given time
+      //if order of these http calls matter then use concatMap
+    );
+  }
+
+  //trigger subscription sequntially
+  //the second will be only called when the first obs is completed
+  concatMap() {
+    let obs1$ = this.obsService.getCommonObs();
+    let obs2$ = this.obsService.getNumberObs();
+
+    obs1$.pipe(concatMap((val) => obs2$));
+    //or
+    obs1$.pipe(concatMap((val) => this.http.post(`http://${val}`, val))); //this will make sure whatever saving will be save sequentially
+    //if new value comes to obs$ it will wait until the prev http call is finished
+  }
+
+  //ignore subsequent emits until prev is completed
+  //ex:- trigger http call on a button click- if user click multiple clicks we can ignore the subsequent clicks
+  //this will not ignore all the subsequent clicks, only while there is already a http call is processing
+  //if we want only one click we can use first() or take(1)
+  exhaustMap() {
+    fromEvent(document, 'click').pipe(exhaustMap((val) => this.http.post(`http://${val}`, val)));
   }
 
   //merge all obs and only subscribe until all of them emit atleast once
@@ -130,6 +165,7 @@ export class RxjsComponent implements OnInit {
     );
   }
 
+  //use in scenarios like in search user type and then backspace, we can ignore this since it was already emitted
   distinctUntilChanged() {
     this.distinctObs$ = this.obsService.obs$.pipe(
       distinctUntilChanged(),

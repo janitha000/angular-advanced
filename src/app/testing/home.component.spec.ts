@@ -49,6 +49,6 @@ describe('HomeComponent', () => {
 
   it('should have 15 links', () => {
     const lists = fixture.debugElement.queryAll(By.css('a'));
-    expect(lists.length).toEqual(21);
+    expect(lists.length).toEqual(22);
   });
 });
