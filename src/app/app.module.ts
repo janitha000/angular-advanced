@@ -34,6 +34,7 @@ import { ViewChidComponent, ViewParentComponent } from './view-child/view-child.
 import { DisableComponent, ValueAccessorComponent } from './reactive-forms/value-accessor/value-accessor.component';
 import { ForChildComponent } from './for-child/for-child.component';
 import { ForChildModule } from './for-child/for-child.module';
+import { RxjsComponent } from './rxjs/rxjs.component';
 
 @NgModule({
   declarations: [
@@ -80,6 +81,7 @@ import { ForChildModule } from './for-child/for-child.module';
     ValueAccessorComponent,
     DisableComponent,
     CardChildComponent,
+    RxjsComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, CommonModule, FormsModule, RouterModule, ReactiveFormsModule, ForChildModule],
   providers: [InteractionService],

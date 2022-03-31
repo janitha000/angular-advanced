@@ -25,6 +25,7 @@ import { ReactiveFormComponent } from './reactive-forms/reactive-forms.component
 import { ValueAccessorComponent } from './reactive-forms/value-accessor/value-accessor.component';
 import { ResolveGuardComponent, ResolveGuardParentComponent } from './resolve-guard/resolve-guard.component';
 import { UserResolver } from './resolve-guard/user.resolver';
+import { RxjsComponent } from './rxjs/rxjs.component';
 import { TemplateVariableComponent } from './template-variable/template-variable.component';
 import { TwoWayParentComponent } from './tow-way-binding/two-way-binding.component';
 import { ViewParentComponent } from './view-child/view-child.component';
@@ -46,6 +47,7 @@ const routes: Routes = [
   { path: 'reactive-form', component: ReactiveFormComponent },
   { path: 'value-control', component: ValueAccessorComponent },
   { path: 'for-child', component: ForChildComponent },
+  { path: 'rxjs', component: RxjsComponent },
   //Can Activate
   {
     path: 'can-activate',
