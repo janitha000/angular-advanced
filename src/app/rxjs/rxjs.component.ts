@@ -1,7 +1,22 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Observable, of, Subject, zip, combineLatest, from, fromEvent } from 'rxjs';
-import { combineLatestWith, concatMap, debounceTime, distinctUntilChanged, exhaustMap, map, mergeMap, switchMap, take, takeLast, takeUntil, takeWhile, tap } from 'rxjs/operators';
+import {
+  combineLatestWith,
+  concatMap,
+  debounceTime,
+  distinctUntilChanged,
+  exhaustMap,
+  map,
+  mergeMap,
+  startWith,
+  switchMap,
+  take,
+  takeLast,
+  takeUntil,
+  takeWhile,
+  tap,
+} from 'rxjs/operators';
 import { RxjsService } from './rxjs.service';
 
 @Component({
@@ -34,6 +49,7 @@ export class RxjsComponent implements OnInit {
     this.take();
     this.zip();
     this.combineLatest();
+    this.startWith();
   }
 
   ngOnDestoy() {
@@ -190,5 +206,11 @@ export class RxjsComponent implements OnInit {
     let source = of(1, 2, 3, 4);
     let obs3$ = source.pipe(takeLast(2));
     obs3$.pipe(takeUntil(this.onDestroy$)).subscribe((val) => console.log('take last ' + val));
+  }
+
+  //provide a default value if there are no emiting at the start
+  startWith() {
+    let obs$ = of();
+    obs$.pipe(startWith(1), takeUntil(this.onDestroy$)).subscribe((val) => console.log('start with: ' + val));
   }
 }
