@@ -1,14 +1,18 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Observable, of, Subject, zip, combineLatest, from, fromEvent } from 'rxjs';
+import { Observable, of, Subject, zip, combineLatest, from, fromEvent, throwError, timer } from 'rxjs';
 import {
+  catchError,
   combineLatestWith,
   concatMap,
   debounceTime,
+  delayWhen,
   distinctUntilChanged,
   exhaustMap,
   map,
   mergeMap,
+  retryWhen,
+  shareReplay,
   startWith,
   switchMap,
   take,
@@ -212,5 +216,76 @@ export class RxjsComponent implements OnInit {
   startWith() {
     let obs$ = of();
     obs$.pipe(startWith(1), takeUntil(this.onDestroy$)).subscribe((val) => console.log('start with: ' + val));
+  }
+
+  catchError() {
+    let obs$ = of(1);
+
+    obs$.pipe(
+      catchError((err) => {
+        console.error(err);
+
+        return of([]); //can create a new fallback observable
+        return throwError(() => new Error(err)); //rethrow the error observable, this never emits an value
+      }),
+    );
+
+    obs$.subscribe(
+      (res) => console.log('Result'), //when fallback obs, this will be called
+      (err) => console.log('Error'), //when rethrow this will be called
+      () => console.log('Complete'),
+    );
+  }
+
+  nultiCatchError() {
+    let obs$ = of('Janitha');
+
+    obs$
+      .pipe(
+        map((val) => parseInt(val)),
+        catchError((err) => {
+          console.log('Error when trying to parse to INT ');
+          return throwError(() => new Error(err));
+        }),
+        catchError((err) => {
+          console.log('caught rethrown error, providing fallback value');
+          return of([]);
+        }),
+      )
+      .subscribe(
+        (res) => console.log('Result', res),
+        (err) => console.log('Error', err),
+        () => console.log('Complete'),
+      );
+
+    // output
+    // Error when trying to parse to INT
+    // caught rethrown error, providing fallback value
+    // Result, []
+    // Complete
+  }
+
+  //retryWhen should return an observable(notification observer) to tell when to retry
+  retry() {
+    let obs$ = of('Janitha');
+
+    obs$
+      .pipe(
+        map((val) => parseInt(val)),
+        shareReplay(),
+
+        retryWhen((errors) => errors.pipe(tap(() => console.log('retrying')))), //retry without any delay,
+        retryWhen((errors) =>
+          errors.pipe(
+            delayWhen(() => timer(2000)),
+            tap(() => console.log('retrying...')),
+          ),
+        ), //retry with 2 seconds of delay
+      )
+      .subscribe(
+        (res) => console.log('Result', res),
+        (err) => console.log('Error', err),
+        () => console.log('Complete'),
+      );
   }
 }
