@@ -36,6 +36,7 @@ import { ForChildComponent } from './for-child/for-child.component';
 import { ForChildModule } from './for-child/for-child.module';
 import { RxjsComponent } from './rxjs/rxjs.component';
 import { HttpClientModule } from '@angular/common/http';
+import { HttpComponent } from './http/http.component';
 
 @NgModule({
   declarations: [
@@ -83,6 +84,7 @@ import { HttpClientModule } from '@angular/common/http';
     DisableComponent,
     CardChildComponent,
     RxjsComponent,
+    HttpComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, CommonModule, FormsModule, RouterModule, ReactiveFormsModule, ForChildModule, HttpClientModule],
   providers: [InteractionService],

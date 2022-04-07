@@ -18,6 +18,7 @@ import { DependencyComponent } from './dependency-injection/dependency.component
 import { DynamicComponent } from './dynamic-loading/dynamic-loading.component';
 import { ForChildComponent } from './for-child/for-child.component';
 import { HomeComponent } from './home/home.component';
+import { HttpComponent } from './http/http.component';
 import { LifecycleParentComponent } from './lifecycle/lifecycle.component';
 import { NamedOutletComponent } from './named-outlets/named-outlet.component';
 import { TrackByComponent } from './ngfor-trackby/ngfor-trackby.component';
@@ -48,6 +49,7 @@ const routes: Routes = [
   { path: 'value-control', component: ValueAccessorComponent },
   { path: 'for-child', component: ForChildComponent },
   { path: 'rxjs', component: RxjsComponent },
+  { path: 'http', component: HttpComponent },
   //Can Activate
   {
     path: 'can-activate',
