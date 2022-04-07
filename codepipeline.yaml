@@ -4,12 +4,10 @@ Parameters:
   DomainName:
     Description: Domain name for the website
     Type: String
-    Default: angular-advanced-dev.janithatennakoon.com
   HostedZone:
     Description: The full domain name e.g. www.janithatennakoon.com
     ConstraintDescription: must be a valid DNS zone name.
     Type: String
-    Default: janithatennakoon.com
 Mappings:
   RegionMap:
     us-east-1:
