@@ -14,7 +14,9 @@
     "lint": " eslint --fix .",
     "prettier": "prettier --check .",
     "format": "prettier --write .",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "client-s3-deploy": "aws s3 sync build/ s3://my-example-app-deployment ",
+    "client-cloudfront-invalidation": "aws cloudfront create-invalidation --distribution-id E2MYXA2L6DJEZ2  --paths '/*' "
   },
   "private": true,
   "dependencies": {
