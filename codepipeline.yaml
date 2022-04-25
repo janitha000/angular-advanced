@@ -8,6 +8,14 @@ Parameters:
     Description: The full domain name e.g. www.janithatennakoon.com
     ConstraintDescription: must be a valid DNS zone name.
     Type: String
+  CertificateARN:
+    Description: The arn of the certificate
+    ConstraintDescription: Should be a valid ARN
+    Type: String
+  HostedZoneId:
+    Description: The id of the hosted zone
+    ConstraintDescription: Should be a valid hosted zone id
+    Type: String
 Mappings:
   RegionMap:
     us-east-1:
@@ -64,26 +72,86 @@ Resources:
                 Resource:
                   - !Sub 'arn:aws:s3:::${RootBucket}'
                   - !Sub 'arn:aws:s3:::${RootBucket}/*'
+  OriginAccessIdentity:
+    Type: AWS::CloudFront::CloudFrontOriginAccessIdentity
+    Properties:
+      CloudFrontOriginAccessIdentityConfig:
+        Comment: !Sub ${AWS::StackName}-s3-origin-oai
   PublishCredentials:
     Type: 'AWS::IAM::AccessKey'
     Properties:
       UserName: !Ref S3PublishUser
-  DNS:
+  # Enable if you want only S3 domains
+  # DNS:
+  #   Type: AWS::Route53::RecordSetGroup
+  #   Properties:
+  #     # HostedZoneName: !Sub
+  #     #   - ${Domain}
+  #     #   - Domain: !Ref DomainName
+  #     HostedZoneName: !Sub '${HostedZone}.'
+  #     Comment: Zone alias
+  #     RecordSets:
+  #       - Name: !Ref DomainName
+  #         Type: A
+  #         AliasTarget:
+  #           HostedZoneId: !FindInMap [RegionMap, !Ref 'AWS::Region', S3hostedzoneID]
+  #           DNSName: !FindInMap [RegionMap, !Ref 'AWS::Region', websiteendpoint]
+
+  Distribution:
+    Type: AWS::CloudFront::Distribution
+    Properties:
+      DistributionConfig:
+        Aliases:
+          - !Ref DomainName
+          - !Sub www.${DomainName}
+        Origins:
+          - DomainName: !Sub ${RootBucket}.s3.${AWS::Region}.amazonaws.com
+            Id: S3Origin
+            S3OriginConfig:
+              OriginAccessIdentity: !Sub origin-access-identity/cloudfront/${OriginAccessIdentity}
+        Enabled: true
+        DefaultRootObject: index.html
+        DefaultCacheBehavior:
+          AllowedMethods:
+            - DELETE
+            - GET
+            - HEAD
+            - OPTIONS
+            - PATCH
+            - POST
+            - PUT
+          TargetOriginId: S3Origin
+          ForwardedValues:
+            QueryString: false
+            Cookies:
+              Forward: none
+          ViewerProtocolPolicy: redirect-to-https
+          CachePolicyId: 658327ea-f89d-4fab-a63d-7e88639e58f6
+        PriceClass: PriceClass_All
+        ViewerCertificate:
+          AcmCertificateArn: !Ref CertificateARN
+          SslSupportMethod: sni-only
+  HostedZoneRecordSetGroup:
     Type: AWS::Route53::RecordSetGroup
     Properties:
-      # HostedZoneName: !Sub
-      #   - ${Domain}
-      #   - Domain: !Ref DomainName
-      HostedZoneName: !Sub '${HostedZone}.'
-      Comment: Zone alias
+      HostedZoneId: !Ref HostedZoneId
       RecordSets:
         - Name: !Ref DomainName
           Type: A
           AliasTarget:
             HostedZoneId: !FindInMap [RegionMap, !Ref 'AWS::Region', S3hostedzoneID]
-            DNSName: !FindInMap [RegionMap, !Ref 'AWS::Region', websiteendpoint]
-
+            DNSName: !GetAtt Distribution.DomainName
 Outputs:
   WebSiteUrl:
     Value: !GetAtt RootBucket.WebsiteURL
     Description: URL for the website hosted on S3
+  DistributionId:
+    Description: CloudFront Distribution Id
+    Value: !Ref Distribution
+    Export:
+      Name: !Sub ${AWS::StackName}-DistributionId
+  DistributionDomainName:
+    Description: CloudFront Distribution Domain Name
+    Value: !GetAtt Distribution.DomainName
+    Export:
+      Name: !Sub ${AWS::StackName}-DistributionDomainName

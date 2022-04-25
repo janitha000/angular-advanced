@@ -1,6 +1,8 @@
 {
   "Parameters": {
     "DomainName": "angular-advanced-dev.janithatennakoon.com",
-    "HostedZone": "janithatennakoon.com"
+    "HostedZone": "janithatennakoon.com",
+    "CertificateARN": "arn:aws:acm:us-east-1:628640267234:certificate/2454c5c5-3bee-4815-8f51-7944ec1bb6bb",
+    "HostedZoneId": "Z10162421HZSKHRW993MU"
   }
 }
