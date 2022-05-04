@@ -91,7 +91,7 @@ import { environment } from '../environments/environment';
     S3ImageComponent,
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     CommonModule,
     FormsModule,
