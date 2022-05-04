@@ -37,6 +37,9 @@ import { ForChildModule } from './for-child/for-child.module';
 import { RxjsComponent } from './rxjs/rxjs.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpComponent } from './http/http.component';
+import { S3ImageComponent } from './s3-image/s3-image.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -85,8 +88,24 @@ import { HttpComponent } from './http/http.component';
     CardChildComponent,
     RxjsComponent,
     HttpComponent,
+    S3ImageComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, CommonModule, FormsModule, RouterModule, ReactiveFormsModule, ForChildModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    CommonModule,
+    FormsModule,
+    RouterModule,
+    ReactiveFormsModule,
+    ForChildModule,
+    HttpClientModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000',
+    }),
+  ],
   providers: [InteractionService],
   bootstrap: [AppComponent],
 })
