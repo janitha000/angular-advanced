@@ -16,8 +16,8 @@ phases:
       # - echo testing...
       - echo building...
       - ng build
-      - npm run client-s3-deploy ${s3-bucket}
-      - npm run client-cloudfront-invalidation ${cloudfront}
+      # - npm run client-s3-deploy ${s3-bucket}
+      # - npm run client-cloudfront-invalidation ${cloudfront}
 artifacts:
   files:
     - '**/*'
